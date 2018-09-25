@@ -1,17 +1,7 @@
-# This version of the game has a bug in it. See if you can figure out how to fix it.
-# http://inventwithpython.com/pygame/buggy
-# Bug Description: SyntaxError: EOL while scanning string literal
-
-
-# Slide Puzzle
-# By Al Sweigart al@inventwithpython.com
-# http://inventwithpython.com/pygame
-# Released under a "Simplified BSD" license
-
 import pygame, sys, random
 from pygame.locals import *
 
-# Create the constants (go ahead and experiment with different values)
+# Create the constants
 BOARDWIDTH = 4  # number of columns in the board
 BOARDHEIGHT = 4 # number of rows in the board
 TILESIZE = 80
@@ -64,7 +54,7 @@ def main():
     allMoves = [] # list of moves made from the solved configuration
 
     while True: # main game loop
-        slideTo = None # the direction, if any, a tile should slide
+        slideTo = None # the direction
         msg = 'Click tile or press arrow keys to slide.' # contains the message to show in the upper left corner.
         if mainBoard == SOLVEDBOARD:
             msg = 'Solved!'
@@ -135,7 +125,6 @@ def checkForQuit():
 
 def getStartingBoard():
     # Return a board data structure with tiles in the solved state.
-    # For example, if BOARDWIDTH and BOARDHEIGHT are both 3, this function
     # returns [[1, 4, 7], [2, 5, 8], [3, 6, BLANK]]
     counter = 1
     board = []
