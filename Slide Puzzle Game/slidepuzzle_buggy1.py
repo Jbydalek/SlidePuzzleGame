@@ -1,17 +1,9 @@
-# This version of the game has a bug in it. See if you can figure out how to fix it.
-# http://inventwithpython.com/pygame/buggy
-# Bug Description: Clicking reset crashes the game: "NameError: global name 'resetAnimation' is not defined"
-
-
 # Slide Puzzle
-# By Al Sweigart al@inventwithpython.com
-# http://inventwithpython.com/pygame
-# Released under a "Simplified BSD" license
 
 import pygame, sys, random
 from pygame.locals import *
 
-# Create the constants (go ahead and experiment with different values)
+# Create the constants
 BOARDWIDTH = 4  # number of columns in the board
 BOARDHEIGHT = 4 # number of rows in the board
 TILESIZE = 80
@@ -135,7 +127,6 @@ def checkForQuit():
 
 def getStartingBoard():
     # Return a board data structure with tiles in the solved state.
-    # For example, if BOARDWIDTH and BOARDHEIGHT are both 3, this function
     # returns [[1, 4, 7], [2, 5, 8], [3, 6, BLANK]]
     counter = 1
     board = []
@@ -218,7 +209,6 @@ def getSpotClicked(board, x, y):
 
 def drawTile(tilex, tiley, number, adjx=0, adjy=0):
     # draw a tile at board coordinates tilex and tiley, optionally a few
-    # pixels over (determined by adjx and adjy)
     left, top = getLeftTopOfTile(tilex, tiley)
     pygame.draw.rect(DISPLAYSURF, TILECOLOR, (left + adjx, top + adjy, TILESIZE, TILESIZE))
     textSurf = BASICFONT.render(str(number), True, TEXTCOLOR)
@@ -257,7 +247,6 @@ def drawBoard(board, message):
 
 
 def slideAnimation(board, direction, message, animationSpeed):
-    # Note: This function does not check if the move is valid.
 
     blankx, blanky = getBlankPosition(board)
     if direction == UP:
@@ -298,8 +287,7 @@ def slideAnimation(board, direction, message, animationSpeed):
 
 
 def generateNewPuzzle(numSlides):
-    # From a starting configuration, make numSlides number of moves (and
-    # animate these moves).
+    # From a starting configuration, make numSlides number of moves
     sequence = []
     board = getStartingBoard()
     drawBoard(board, '')
